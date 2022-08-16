@@ -1,5 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native';
 import { useState, useEffect } from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import mineLayer from '../../assets/mine-layer.png';
 
 const BombFour = ({ values, coordinates, rotation, isValuesVisible }) => {
   const [isVisible, setIsVisible] = useState(isValuesVisible);
@@ -28,6 +29,7 @@ const BombFour = ({ values, coordinates, rotation, isValuesVisible }) => {
         ]}
       >
         <Text style={styles.bombValue(isVisible)}>{values[0]}</Text>
+        <Image style={styles.image} source={mineLayer} />
       </View>
       <View
         style={[
@@ -38,6 +40,7 @@ const BombFour = ({ values, coordinates, rotation, isValuesVisible }) => {
         ]}
       >
         <Text style={styles.bombValue(isVisible)}>{values[1]}</Text>
+        <Image style={styles.image} source={mineLayer} />
       </View>
       <View
         style={[
@@ -48,6 +51,7 @@ const BombFour = ({ values, coordinates, rotation, isValuesVisible }) => {
         ]}
       >
         <Text style={styles.bombValue(isVisible)}>{values[2]}</Text>
+        <Image style={styles.image} source={mineLayer} />
       </View>
       <View
         style={[
@@ -58,6 +62,7 @@ const BombFour = ({ values, coordinates, rotation, isValuesVisible }) => {
         ]}
       >
         <Text style={styles.bombValue(isVisible)}>{values[3]}</Text>
+        <Image style={styles.image} source={mineLayer} />
       </View>
     </View>
   );
@@ -65,15 +70,22 @@ const BombFour = ({ values, coordinates, rotation, isValuesVisible }) => {
 
 const styles = StyleSheet.create({
   bombFour: (coordinates) => ({
-    width: 44,
-    height: 44,
+    width: 40,
+    height: 40,
     position: 'absolute',
     top: coordinates.y,
     left: coordinates.x,
   }),
+  image: {
+    width: 20,
+    height: 20,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
   firstSection: {
-    width: 22,
-    height: 22,
+    width: 20,
+    height: 20,
     backgroundColor: '#f37fa5',
     position: 'absolute',
     top: 0,
@@ -82,8 +94,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   secondSection: {
-    width: 22,
-    height: 22,
+    width: 20,
+    height: 20,
     backgroundColor: '#f37fa5',
     position: 'absolute',
     top: 0,
@@ -92,8 +104,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   thirdSection: {
-    width: 22,
-    height: 22,
+    width: 20,
+    height: 20,
     backgroundColor: '#f37fa5',
     position: 'absolute',
     bottom: 0,
@@ -102,11 +114,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   fourthSection: {
-    width: 22,
-    height: 22,
+    width: 20,
+    height: 20,
     backgroundColor: '#f37fa5',
     position: 'absolute',
-    top: -22,
+    top: -20,
     left: 0,
     alignItems: 'center',
     justifyContent: 'center',

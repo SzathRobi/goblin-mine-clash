@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, TextInput } from 'react-native';
 import Button from '../components/button';
 import { useContext, useEffect, useState } from 'react';
 import { SettingsContext } from '../contexts/settings-context';
+import { LinearGradient } from 'expo-linear-gradient';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function SettingsScreen({ navigation, route }) {
@@ -55,15 +56,20 @@ export default function SettingsScreen({ navigation, route }) {
   return (
     <View style={styles.container(theme)}>
       <View style={styles.label}>
-        <Text style={styles.labelText}>
-          {language === 'En' ? 'Name: ' : 'Név'}
-        </Text>
-        <TextInput
-          onChangeText={updateUsername}
-          value={username}
-          maxLength={10}
-          style={styles.input}
-        />
+        <LinearGradient
+          colors={['#84cc16', '#5c9c02']}
+          style={styles.linearGradient}
+        >
+          <Text style={styles.labelText}>
+            {language === 'En' ? 'Name: ' : 'Név'}
+          </Text>
+          <TextInput
+            onChangeText={updateUsername}
+            value={username}
+            maxLength={10}
+            style={styles.input}
+          />
+        </LinearGradient>
       </View>
       <Button onPress={() => updateDifficulty()}>
         {language === 'En' ? 'Difficulty' : 'Nehézség'}:{getDifficulty()}
@@ -93,7 +99,7 @@ const styles = StyleSheet.create({
     };
   },
   container: (theme) => {
-    const bgColor = theme == 'Light' ? '#fff' : '#222';
+    const bgColor = theme == 'Light' ? '#d8f7cc' : '#013220';
     return {
       flex: 1,
       backgroundColor: bgColor,
@@ -104,20 +110,21 @@ const styles = StyleSheet.create({
   label: {
     position: 'relative',
     width: 250,
-    padding: 20,
     marginVertical: 20,
     backgroundColor: '#338a3e',
     borderRadius: 8,
-    display: 'flex',
-    flexDirection: 'row',
+    overflow: 'hidden',
+    elevation: 5,
+  },
+  linearGradient: {
+    width: 250,
+    padding: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 4,
-    elevation: 5,
   },
   labelText: {
     color: '#fff',
-    fontSize: 22,
+    fontSize: 18,
     position: 'relative',
     right: 35,
   },
@@ -125,8 +132,9 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     paddingLeft: 105,
     color: '#fff',
-    fontSize: 22,
+    fontSize: 18,
     position: 'absolute',
+    top: 20,
     width: '100%',
     height: '100%',
   },
